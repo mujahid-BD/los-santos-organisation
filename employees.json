@@ -1,20 +1,23 @@
 [
   {
-    "name": "Mujahid Shohan",
-    "role": "Founder & Developer",
+    "name": "Atif Ayan",
+    "role": "Owner",
     "image": "images/shohan.jpg",
-    "discord": "@shohan#1234"
+    "number": "839-9009",
+    "discord": "blacklegit"
   },
   {
-    "name": "Rafiul Islam",
-    "role": "Web Designer",
+    "name": "Arther Homes",
+    "role": "Manager",
     "image": "images/rafi.jpg",
+    "number": "830-1029",
     "discord": "@rafi#5678"
   },
   {
-    "name": "Tamim Rahman",
-    "role": "Project Manager",
+    "name": "Mofiz Mia",
+    "role": "Assistant Manager",
     "image": "images/tamim.jpg",
-    "discord": "@tamim#9012"
+    "number": "297-4572",
+    "discord": "5l1ther"
   }
 ]
