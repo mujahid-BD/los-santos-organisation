@@ -1,0 +1,68 @@
+[
+  {
+    "type": "Occupation Avenue Apt.Complex B",
+    "image": "images/Occupation Avenue B.jpg",
+    "categories": [
+      {
+        "name": "Low-End Apartment",
+        "image": "images/motel.jpg",
+        "storage": 2500,
+        "available": true
+      },
+      {
+        "name": "Janitor Apartment",
+        "image": "images/janitor.jpg",
+        "storage": 2000,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/lowend-apartment.jpg",
+        "storage": 2500,
+        "available": true
+      }
+    ]
+  },
+  {
+    "type": "Whispymound Drive",
+    "image": "images/Whispymound Drive.jpg",
+    "categories": [
+      {
+        "name": "Franklin's Mansion",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/midend-apartment.jpg",
+        "storage": 5000,
+        "available": true
+      },
+      {
+        "name": "High-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 10000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Cougar Avenue",
+    "image": "images/Cougar Avenue.jpg",
+    "categories": [
+      {
+        "name": "Michael's Mansion",
+        "image": "images/michael.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/beachhouse.jpg",
+        "storage": 6000,
+        "available": false
+      }
+    ]
+  }
+]
