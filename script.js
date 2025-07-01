@@ -99,3 +99,7 @@ window.addEventListener("keydown", (e) => {
     modal.style.display = "none";
   }
 });
+
+// ✅ Make functions accessible to inline onclick in HTML
+window.submitBooking = submitBooking;
+window.openBooking = openBooking;
