@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Mujahid Shohan",
+    "role": "Founder & Developer",
+    "image": "images/shohan.jpg",
+    "discord": "@shohan#1234"
+  },
+  {
+    "name": "Rafiul Islam",
+    "role": "Web Designer",
+    "image": "images/rafi.jpg",
+    "discord": "@rafi#5678"
+  },
+  {
+    "name": "Tamim Rahman",
+    "role": "Project Manager",
+    "image": "images/tamim.jpg",
+    "discord": "@tamim#9012"
+  }
+]
