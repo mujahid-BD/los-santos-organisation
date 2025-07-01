@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employees - Los Santos Organisation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo" />
+      <h1>Los Santos Organisation</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="employees.html" class="active">Employees</a>
+      <a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-btn">Join Discord</a>
+    </nav>
+  </header>
+
+  <!-- Employees Section -->
+  <main>
+    <section class="employee-section">
+      <h2>Meet Our Team</h2>
+      <div id="employee-list" class="employee-list">
+        <!-- Loaded via JS -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Los Santos Organisation. All rights reserved.</p>
+    <p><a href="https://discord.gg/NyUmvfAzC4" target="_blank">Join our Discord</a></p>
+  </footer>
+
+  <script>
+    fetch("employees.json")
+      .then(res => res.json())
+      .then(data => {
+        const list = document.getElementById("employee-list");
+        data.forEach(emp => {
+          const card = document.createElement("div");
+          card.className = "employee-card";
+          card.innerHTML = `
+            <img src="${emp.image}" alt="${emp.name}" />
+            <h3>${emp.name}</h3>
+            <p>${emp.role}</p>
+            <p class="discord-id">${emp.discord}</p>
+          `;
+          list.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>
