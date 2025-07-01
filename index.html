@@ -2,45 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Los Santos Organisation</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- 🌇 Header -->
-  <header class="site-header">
+  <header>
     <div class="logo">
       <img src="images/logo.png" alt="Logo" />
       <h1>Los Santos Organisation</h1>
     </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="employees.html">Employees</a>
-      <a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-btn">Join Discord</a>
+      <ul>
+        <li><a href="#house-list">Houses</a></li>
+        <li><a href="employees.html">Employees</a></li>
+        <li><a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-button">Join Discord</a></li>
+      </ul>
     </nav>
   </header>
 
-  <!-- 🏘️ House Listings -->
   <main>
-    <section id="house-list" class="house-list">
-      <!-- Houses will load dynamically from houses.json -->
+    <section id="top-rated">
+      <h2>⭐ Top Rated Houses</h2>
+      <div id="top-rated-list" class="house-grid"></div>
+    </section>
+
+    <section id="house-list">
+      <h2>All Houses</h2>
+      <div class="house-grid"></div>
     </section>
   </main>
 
-  <!-- 📥 Modal (Categories + Booking) -->
   <div id="booking-modal" class="modal">
-    <div class="modal-content" id="modal-content"></div>
+    <div id="modal-content" class="modal-content"></div>
   </div>
 
-  <!-- 📎 Footer -->
-  <footer class="site-footer">
+  <footer>
     <p>&copy; 2025 Los Santos Organisation. All rights reserved.</p>
-    <p><a href="https://discord.gg/NyUmvfAzC4" target="_blank">Join our Discord</a></p>
   </footer>
 
-  <!-- 🔌 JS -->
   <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 </body>
 </html>
