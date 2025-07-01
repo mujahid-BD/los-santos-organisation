@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Los Santos Organisation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 🌇 Header -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo" />
+      <h1>Los Santos Organisation</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="employees.html">Employees</a>
+      <a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-btn">Join Discord</a>
+    </nav>
+  </header>
+
+  <!-- 🏘️ House Listings -->
+  <main>
+    <section id="house-list" class="house-list">
+      <!-- Houses will load dynamically from houses.json -->
+    </section>
+  </main>
+
+  <!-- 📥 Modal (Categories + Booking) -->
+  <div id="booking-modal" class="modal">
+    <div class="modal-content" id="modal-content"></div>
+  </div>
+
+  <!-- 📎 Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2025 Los Santos Organisation. All rights reserved.</p>
+    <p><a href="https://discord.gg/NyUmvfAzC4" target="_blank">Join our Discord</a></p>
+  </footer>
+
+  <!-- 🔌 JS -->
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</body>
+</html>
