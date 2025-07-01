@@ -1,6 +1,5 @@
 // === script.js ===
 
-// DOM References
 const houseListElement = document.getElementById("house-list");
 const modal = document.getElementById("booking-modal");
 const modalContent = document.getElementById("modal-content");
@@ -21,7 +20,7 @@ fetch("houses.json")
     });
   });
 
-// Show categories inside modal
+// Show category list in modal
 function showCategories(house) {
   modal.style.display = "flex";
   modalContent.innerHTML = `
@@ -41,7 +40,7 @@ function showCategories(house) {
   `;
 }
 
-// Show booking form
+// Open booking form
 function openBooking(houseType, categoryName) {
   modalContent.innerHTML = `
     <span class="close" onclick="modal.style.display='none'">&times;</span>
@@ -53,7 +52,7 @@ function openBooking(houseType, categoryName) {
   `;
 }
 
-// Submit to Google Sheets with secure token
+// Submit form with FormData (CORS-safe)
 function submitBooking(houseType, categoryName) {
   const username = document.getElementById("username").value.trim();
   const discord = document.getElementById("discord").value.trim();
@@ -64,35 +63,33 @@ function submitBooking(houseType, categoryName) {
     return;
   }
 
-  const payload = {
-    token: "los_santos_secure_786", // ✅ Secure token
-    house: houseType,
-    category: categoryName,
-    name: username,
-    discord: discord,
-    message: message
-  };
+  const formData = new FormData();
+  formData.append("token", "los_santos_secure_786"); // 🔐 Secure token
+  formData.append("house", houseType);
+  formData.append("category", categoryName);
+  formData.append("name", username);
+  formData.append("discord", discord);
+  formData.append("message", message);
 
   const scriptURL = "https://script.google.com/macros/s/AKfycbx3xYAdQ1EfLJ3yCLjkd-OwHV-wwrGGTh9oir_tGeDV-jecuA1atvMaWTtKAjvIutU/exec";
 
   fetch(scriptURL, {
     method: "POST",
-    body: JSON.stringify(payload),
-    headers: { "Content-Type": "application/json" }
+    body: formData
   })
-  .then(res => res.text())
-  .then(responseText => {
-    if (responseText.includes("Success")) {
-      alert("✅ Request submitted successfully!");
-      modal.style.display = "none";
-    } else {
-      alert("❌ Submission failed: " + responseText);
-    }
-  })
-  .catch(err => {
-    console.error("Error submitting request:", err);
-    alert("🚫 Something went wrong. Please try again.");
-  });
+    .then(res => res.text())
+    .then(response => {
+      if (response.includes("Success")) {
+        alert("✅ Request submitted successfully!");
+        modal.style.display = "none";
+      } else {
+        alert("❌ Submission failed: " + response);
+      }
+    })
+    .catch(error => {
+      console.error("Error submitting request:", error);
+      alert("🚫 Something went wrong. Please try again.");
+    });
 }
 
 // ESC key to close modal
@@ -102,6 +99,5 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// Make functions accessible from HTML inline onclick
 window.submitBooking = submitBooking;
 window.openBooking = openBooking;
