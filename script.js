@@ -1,103 +1,152 @@
 // === script.js ===
 
-const houseListElement = document.getElementById("house-list");
-const modal = document.getElementById("booking-modal");
-const modalContent = document.getElementById("modal-content");
+let houseListElement = document.querySelector("#house-list .house-grid");
+let topRatedListElement = document.querySelector("#top-rated-list");
+let modal = document.getElementById("booking-modal");
+let modalContent = document.getElementById("modal-content");
 
-// Load house data from JSON
+// Load JSON data
 fetch("houses.json")
-  .then(res => res.json())
-  .then(houses => {
-    houses.forEach(house => {
-      const houseCard = document.createElement("div");
-      houseCard.className = "house-type-card";
-      houseCard.innerHTML = `
-        <img src="${house.image}" alt="${house.type}" />
-        <h2>${house.type}</h2>
-      `;
-      houseCard.addEventListener("click", () => showCategories(house));
-      houseListElement.appendChild(houseCard);
+  .then((res) => res.json())
+  .then((houses) => {
+    houses.forEach((house, houseIndex) => {
+      renderHouseCard(house, houseListElement, houseIndex);
+
+      house.categories.forEach((cat, catIndex) => {
+        const avgRating = getAverageRating(house.type, cat.name);
+        if (avgRating >= 4.5) {
+          renderHouseCard(house, topRatedListElement, houseIndex, catIndex);
+        }
+      });
     });
   });
 
-// Show category list in modal
-function showCategories(house) {
-  modal.style.display = "flex";
-  modalContent.innerHTML = `
-    <span class="close" onclick="modal.style.display='none'">&times;</span>
+function renderHouseCard(house, container, houseIndex, catIndex = null) {
+  let card = document.createElement("div");
+  card.className = "house-type-card";
+  card.innerHTML = `
+    <img src="${house.image}" alt="${house.type}" />
+    <h2>${house.type}</h2>
+  `;
+  card.addEventListener("click", () => showCategories(house, houseIndex));
+
+  if (catIndex !== null) {
+    const cat = house.categories[catIndex];
+    card.innerHTML += `
+      <p>🏷️ ${cat.name}</p>
+      <p>⭐ Rating: ${getAverageRating(house.type, cat.name).toFixed(1)}</p>
+    `;
+  }
+
+  container.appendChild(card);
+}
+
+function showCategories(house, houseIndex) {
+  modal.style.display = "block";
+  modalContent.innerHTML = `<span class="close" id="close-modal">&times;</span>
     <h2>${house.type}</h2>
     <div class="category-list">
-      ${house.categories.map((cat) => `
+      ${house.categories
+        .map(
+          (cat, index) => `
         <div class="category-card">
           <img src="${cat.image}" alt="${cat.name}" />
           <h3>${cat.name}</h3>
           <p>Storage: ${cat.storage}</p>
           <p>Status: ${cat.available ? "Available" : "<span class='not-available'>Not Available</span>"}</p>
+          ${renderRatingStars(house.type, cat.name)}
           ${cat.available ? `<button onclick="openBooking('${house.type}', '${cat.name}')">Request to Book</button>` : ""}
         </div>
-      `).join("")}
+      `
+        )
+        .join("")}
     </div>
   `;
+
+  document.getElementById("close-modal").onclick = function () {
+    modal.style.display = "none";
+  };
+
+  document.querySelectorAll('.rating-star').forEach(star => {
+    star.addEventListener('click', function () {
+      const houseType = this.dataset.house;
+      const category = this.dataset.category;
+      const rating = parseInt(this.dataset.value);
+      saveRating(houseType, category, rating);
+      showCategories(house, houseIndex);
+    });
+  });
 }
 
-// Open booking form
 function openBooking(houseType, categoryName) {
-  modalContent.innerHTML = `
-    <span class="close" onclick="modal.style.display='none'">&times;</span>
+  let formHTML = `
     <h3>Request Booking - ${houseType} / ${categoryName}</h3>
     <input type="text" id="username" placeholder="Your Name" required />
     <input type="text" id="discord" placeholder="Discord ID" required />
-    <textarea id="message" placeholder="Extra Info (optional)"></textarea>
+    <textarea id="message" placeholder="Extra Info"></textarea>
     <button onclick="submitBooking('${houseType}', '${categoryName}')">Submit</button>
   `;
+  modalContent.innerHTML = formHTML;
 }
 
-// Submit form with FormData (CORS-safe)
 function submitBooking(houseType, categoryName) {
-  const username = document.getElementById("username").value.trim();
-  const discord = document.getElementById("discord").value.trim();
-  const message = document.getElementById("message").value.trim();
+  const username = document.getElementById("username").value;
+  const discord = document.getElementById("discord").value;
+  const message = document.getElementById("message").value;
 
-  if (!username || !discord) {
-    alert("⚠️ Please fill in all required fields.");
-    return;
-  }
+  const payload = {
+    content: `📢 New Booking Request\n🏠 House: ${houseType}\n📦 Category: ${categoryName}\n🙍 Name: ${username}\n💬 Discord: ${discord}\n📝 Message: ${message}`
+  };
 
-  const formData = new FormData();
-  formData.append("token", "los_santos_secure_786"); // 🔐 Secure token
-  formData.append("house", houseType);
-  formData.append("category", categoryName);
-  formData.append("name", username);
-  formData.append("discord", discord);
-  formData.append("message", message);
-
-  const scriptURL = "https://script.google.com/macros/s/AKfycbx3xYAdQ1EfLJ3yCLjkd-OwHV-wwrGGTh9oir_tGeDV-jecuA1atvMaWTtKAjvIutU/exec";
-
-  fetch(scriptURL, {
+  fetch("https://ptb.discord.com/api/webhooks/1389258607631007887/UpeNc0zDujkUfCcOtmrlPXPCzK1dkDc-hZZBLFj68sIVL8FUTBR5vdos8awmeokCG485", {
     method: "POST",
-    body: formData
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
   })
-    .then(res => res.text())
-    .then(response => {
-      if (response.includes("Success")) {
-        alert("✅ Request submitted successfully!");
+    .then((res) => {
+      if (res.ok) {
+        alert("Request Sent!");
         modal.style.display = "none";
       } else {
-        alert("❌ Submission failed: " + response);
+        alert("Failed to send request.");
       }
-    })
-    .catch(error => {
-      console.error("Error submitting request:", error);
-      alert("🚫 Something went wrong. Please try again.");
     });
 }
 
-// ESC key to close modal
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    modal.style.display = "none";
+function renderRatingStars(houseType, category) {
+  const avg = getAverageRating(houseType, category);
+  let html = '<div class="rating-stars">';
+  for (let i = 1; i <= 5; i++) {
+    html += `<span class="rating-star ${i <= avg ? 'filled' : ''}" data-house="${houseType}" data-category="${category}" data-value="${i}">&#9733;</span>`;
   }
-});
+  html += ` <small>(${avg.toFixed(1)})</small></div>`;
+  return html;
+}
 
-window.submitBooking = submitBooking;
-window.openBooking = openBooking;
+function getAverageRating(houseType, category) {
+  const key = `${houseType}-${category}`;
+  const data = JSON.parse(localStorage.getItem("ratings") || "{}");
+  if (!data[key]) return 0;
+  return data[key].total / data[key].count;
+}
+
+function saveRating(houseType, category, rating) {
+  const key = `${houseType}-${category}`;
+  const data = JSON.parse(localStorage.getItem("ratings") || "{}");
+  if (!data[key]) {
+    data[key] = { total: 0, count: 0 };
+  }
+  data[key].total += rating;
+  data[key].count += 1;
+  localStorage.setItem("ratings", JSON.stringify(data));
+}
+
+// Optional QR (if used)
+const qrCanvas = document.getElementById("discord-qr");
+if (qrCanvas) {
+  new QRCode(qrCanvas, {
+    text: "https://discord.gg/NyUmvfAzC4",
+    width: 120,
+    height: 120
+  });
+}
