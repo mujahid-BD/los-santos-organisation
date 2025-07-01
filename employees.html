@@ -1,59 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Employees - Los Santos Organisation</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Employees - Los Santos Organisation</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Header -->
-  <header class="site-header">
+  <header>
     <div class="logo">
-      <img src="images/logo.png" alt="Logo" />
+      <img src="images/logo.png" alt="Logo">
       <h1>Los Santos Organisation</h1>
     </div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="employees.html" class="active">Employees</a>
-      <a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-btn">Join Discord</a>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="employees.html">Employees</a></li>
+        <li><a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-button">Join Discord</a></li>
+      </ul>
     </nav>
   </header>
 
-  <!-- Employees Section -->
   <main>
-    <section class="employee-section">
+    <section>
       <h2>Meet Our Team</h2>
-      <div id="employee-list" class="employee-list">
-        <!-- Loaded via JS -->
+      <div class="employee-grid">
+        <div class="employee-card">
+          <img src="images/employees/john.jpg" alt="John Doe">
+          <h3>John Doe</h3>
+          <p>Role: Property Manager</p>
+        </div>
+        <div class="employee-card">
+          <img src="images/employees/jane.jpg" alt="Jane Smith">
+          <h3>Jane Smith</h3>
+          <p>Role: Booking Officer</p>
+        </div>
+        <div class="employee-card">
+          <img src="images/employees/ryan.jpg" alt="Ryan Lee">
+          <h3>Ryan Lee</h3>
+          <p>Role: Support Specialist</p>
+        </div>
+        <!-- Add more employee cards here -->
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
+  <footer>
     <p>&copy; 2025 Los Santos Organisation. All rights reserved.</p>
-    <p><a href="https://discord.gg/NyUmvfAzC4" target="_blank">Join our Discord</a></p>
   </footer>
-
-  <script>
-    fetch("employees.json")
-      .then(res => res.json())
-      .then(data => {
-        const list = document.getElementById("employee-list");
-        data.forEach(emp => {
-          const card = document.createElement("div");
-          card.className = "employee-card";
-          card.innerHTML = `
-            <img src="${emp.image}" alt="${emp.name}" />
-            <h3>${emp.name}</h3>
-            <p>${emp.role}</p>
-            <p class="discord-id">${emp.discord}</p>
-          `;
-          list.appendChild(card);
-        });
-      });
-  </script>
 </body>
 </html>
