@@ -53,7 +53,7 @@ function openBooking(houseType, categoryName) {
   `;
 }
 
-// Submit to Google Sheet
+// Submit to Google Sheets with secure token
 function submitBooking(houseType, categoryName) {
   const username = document.getElementById("username").value.trim();
   const discord = document.getElementById("discord").value.trim();
@@ -65,6 +65,7 @@ function submitBooking(houseType, categoryName) {
   }
 
   const payload = {
+    token: "los_santos_secure_786", // ✅ Secure token
     house: houseType,
     category: categoryName,
     name: username,
@@ -79,17 +80,18 @@ function submitBooking(houseType, categoryName) {
     body: JSON.stringify(payload),
     headers: { "Content-Type": "application/json" }
   })
-  .then(res => {
-    if (res.ok) {
+  .then(res => res.text())
+  .then(responseText => {
+    if (responseText.includes("Success")) {
       alert("✅ Request submitted successfully!");
       modal.style.display = "none";
     } else {
-      alert("❌ Failed to send request.");
+      alert("❌ Submission failed: " + responseText);
     }
   })
   .catch(err => {
     console.error("Error submitting request:", err);
-    alert("🚫 Something went wrong.");
+    alert("🚫 Something went wrong. Please try again.");
   });
 }
 
@@ -100,6 +102,6 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
-// ✅ Make functions accessible to inline onclick in HTML
+// Make functions accessible from HTML inline onclick
 window.submitBooking = submitBooking;
 window.openBooking = openBooking;
