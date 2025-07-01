@@ -1,14 +1,16 @@
+// === script.js ===
+
 // DOM References
-let houseListElement = document.getElementById("house-list");
-let modal = document.getElementById("booking-modal");
-let modalContent = document.getElementById("modal-content");
+const houseListElement = document.getElementById("house-list");
+const modal = document.getElementById("booking-modal");
+const modalContent = document.getElementById("modal-content");
 
 // Load house data from JSON
 fetch("houses.json")
   .then(res => res.json())
   .then(houses => {
     houses.forEach(house => {
-      let houseCard = document.createElement("div");
+      const houseCard = document.createElement("div");
       houseCard.className = "house-type-card";
       houseCard.innerHTML = `
         <img src="${house.image}" alt="${house.type}" />
@@ -19,14 +21,14 @@ fetch("houses.json")
     });
   });
 
-// Show categories in modal
+// Show categories inside modal
 function showCategories(house) {
   modal.style.display = "flex";
   modalContent.innerHTML = `
     <span class="close" onclick="modal.style.display='none'">&times;</span>
     <h2>${house.type}</h2>
     <div class="category-list">
-      ${house.categories.map((cat, i) => `
+      ${house.categories.map((cat) => `
         <div class="category-card">
           <img src="${cat.image}" alt="${cat.name}" />
           <h3>${cat.name}</h3>
@@ -51,14 +53,14 @@ function openBooking(houseType, categoryName) {
   `;
 }
 
-// Submit form to Google Sheet (change URL to your Apps Script)
+// Submit to Google Sheet
 function submitBooking(houseType, categoryName) {
-  const username = document.getElementById("username").value;
-  const discord = document.getElementById("discord").value;
-  const message = document.getElementById("message").value;
+  const username = document.getElementById("username").value.trim();
+  const discord = document.getElementById("discord").value.trim();
+  const message = document.getElementById("message").value.trim();
 
   if (!username || !discord) {
-    alert("Please fill all required fields.");
+    alert("⚠️ Please fill in all required fields.");
     return;
   }
 
@@ -70,7 +72,6 @@ function submitBooking(houseType, categoryName) {
     message: message
   };
 
-  // Replace with your Apps Script URL
   const scriptURL = "https://script.google.com/macros/s/AKfycbx3xYAdQ1EfLJ3yCLjkd-OwHV-wwrGGTh9oir_tGeDV-jecuA1atvMaWTtKAjvIutU/exec";
 
   fetch(scriptURL, {
@@ -78,17 +79,23 @@ function submitBooking(houseType, categoryName) {
     body: JSON.stringify(payload),
     headers: { "Content-Type": "application/json" }
   })
-  .then(response => {
-    if (response.ok) {
-      alert("Request submitted successfully!");
+  .then(res => {
+    if (res.ok) {
+      alert("✅ Request submitted successfully!");
       modal.style.display = "none";
     } else {
-      alert("Something went wrong!");
+      alert("❌ Failed to send request.");
     }
+  })
+  .catch(err => {
+    console.error("Error submitting request:", err);
+    alert("🚫 Something went wrong.");
   });
 }
 
-// ESC to close modal
+// ESC key to close modal
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") modal.style.display = "none";
+  if (e.key === "Escape") {
+    modal.style.display = "none";
+  }
 });
