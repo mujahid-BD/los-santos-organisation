@@ -71,7 +71,7 @@ function submitBooking(houseType, categoryName) {
   };
 
   // Replace with your Apps Script URL
-  const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbx3xYAdQ1EfLJ3yCLjkd-OwHV-wwrGGTh9oir_tGeDV-jecuA1atvMaWTtKAjvIutU/exec";
 
   fetch(scriptURL, {
     method: "POST",
