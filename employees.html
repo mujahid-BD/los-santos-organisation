@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Our Employees - Los Santos Organisation</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="images/logo.png" alt="Logo">
+      <img src="images/logo.png" alt="Logo" />
       <h1>Los Santos Organisation</h1>
     </div>
     <nav>
@@ -24,31 +24,32 @@
   <main>
     <section>
       <h2>Meet Our Team</h2>
-      <div class="employee-grid">
-        <div class="employee-card">
-          <img src="images/atif.jpg" alt="Atif Ayan">
-          <h3>Atif Ayan</h3>
-          <p>Role: Owner</p>
-          <p>number:389-9009</p>
-          <p>discord:blacklegit</p>
-        </div>
-        <div class="employee-card">
-          <img src="images/employees/jane.jpg" alt="Jane Smith">
-          <h3>Jane Smith</h3>
-          <p>Role: Booking Officer</p>
-        </div>
-        <div class="employee-card">
-          <img src="images/employees/ryan.jpg" alt="Ryan Lee">
-          <h3>Ryan Lee</h3>
-          <p>Role: Support Specialist</p>
-        </div>
-        <!-- Add more employee cards here -->
-      </div>
+      <div class="employee-grid" id="employee-grid"></div>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Los Santos Organisation. All rights reserved.</p>
   </footer>
+
+  <script>
+    fetch("employees.json")
+      .then((res) => res.json())
+      .then((employees) => {
+        const grid = document.getElementById("employee-grid");
+        employees.forEach((emp) => {
+          const card = document.createElement("div");
+          card.className = "employee-card";
+          card.innerHTML = `
+            <img src="${emp.image}" alt="${emp.name}" />
+            <h3>${emp.name}</h3>
+            <p>Role: ${emp.role}</p>
+            <p>Phone: ${emp.number}</p>
+            <p>Discord: ${emp.discord}</p>
+          `;
+          grid.appendChild(card);
+        });
+      });
+  </script>
 </body>
 </html>
