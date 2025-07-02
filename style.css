@@ -164,8 +164,45 @@ footer {
   color: gold;
 }
 
+.employee-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.employee-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 220px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.employee-card:hover {
+  transform: translateY(-5px);
+}
+
+.employee-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.employee-card h3 {
+  margin: 10px 0 5px;
+}
+
+.employee-card p {
+  margin: 4px 0;
+}
+
 @media (max-width: 600px) {
-  .house-type-card, .category-card {
+  .house-type-card, .category-card, .employee-card {
     width: 90%;
   }
   .modal-content {
