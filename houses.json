@@ -7,19 +7,61 @@
         "name": "Low-End Apartment",
         "image": "images/motel.jpg",
         "storage": 2500,
-        "available": true
+        "available": false
       },
       {
-        "name": "Janitor Apartment",
+        "name": "Low-End Apartment",
         "image": "images/janitor.jpg",
-        "storage": 2000,
+        "storage": 2500,
         "available": false
       },
       {
         "name": "Low-End Apartment",
         "image": "images/lowend-apartment.jpg",
         "storage": 2500,
-        "available": true
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/lowend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Occupation Avenue Apt.Complex D",
+    "image": "images/Occupation Avenue D.jpg",
+    "categories": [
+      {
+        "name": "Low-End Apartment",
+        "image": "images/motel.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/janitor.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/lowend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/lowend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/lowend-apartment.jpg",
+        "storage": 2500,
+        "available": false
       }
     ]
   },
@@ -34,13 +76,157 @@
         "available": true
       },
       {
-        "name": "Mid-End Apartment(House)",
+        "name": "High-End Apartment",
         "image": "images/midend-apartment.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
         "storage": 5000,
         "available": true
       },
       {
+        "name": "Franklin's Mansion",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Nikola Avenue",
+    "image": "images/Nikola Avenue.jpg",
+    "categories": [
+      {
+        "name": "Michael's Mansion",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/midend-apartment.jpg",
+        "storage": 6000,
+        "available": false
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": false
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "North Conker Avenue",
+    "image": "images/North Conker Avenue.jpg",
+    "categories": [
+      {
+        "name": "Franklin's Mansion",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
         "name": "High-End Apartment",
+        "image": "images/midend-apartment.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "High-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Franklin's Mansion",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 10000,
+        "available": true
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Cockingend Drive",
+    "image": "images/Cockingend Drive.jpg",
+    "categories": [
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 5000,
+        "available": false
+      },
+      {
+        "name": "Michael's Mansion",
+        "image": "images/midend-apartment.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": true
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": true
+      },
+      {
+        "name": "Michael's Mansion",
+        "image": "images/highend-apartment.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Michael's Mansion",
+        "image": "images/highend-apartment.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Mid-End Apartment(House)",
+        "image": "images/highend-apartment.jpg",
+        "storage": 5000,
+        "available": false
+      },
+      {
+        "name": "Michael's Mansion",
         "image": "images/highend-apartment.jpg",
         "storage": 10000,
         "available": false
@@ -52,14 +238,152 @@
     "image": "images/Cougar Avenue.jpg",
     "categories": [
       {
-        "name": "Michael's Mansion",
+        "name": "Mid-End Apartment(House)",
         "image": "images/michael.jpg",
+        "storage": 5000,
+        "available": false
+      },
+      {
+        "name": "Michael's Mansion",
+        "image": "images/beachhouse.jpg",
         "storage": 10000,
         "available": true
       },
       {
         "name": "Trevor's Beach House",
         "image": "images/beachhouse.jpg",
+        "storage": 6000,
+        "available": false
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/beachhouse.jpg",
+        "storage": 6000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Greenwich Place",
+    "image": "images/Cougar Avenue.jpg",
+    "categories": [
+      {
+        "name": "High-End Apartment",
+        "image": "images/michael.jpg",
+        "storage": 10000,
+        "available": false
+      },
+      {
+        "name": "Michael's Mansion",
+        "image": "images/beachhouse.jpg",
+        "storage": 10000,
+        "available": false
+      },
+    ]
+  },
+  {
+    "type": "Eclipse Boulevard",
+    "image": "images/Eclipse Boulevard.jpg",
+    "categories": [
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": false
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      },
+      {
+        "name": "Motel",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 1000,
+        "available": false
+      }
+    ]
+  },
+  {
+    "type": "Vespucci Boulevard Apt.Complex B",
+    "image": "images/Vespucci Boulevard B.jpg",
+    "categories": [
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
+        "storage": 6000,
+        "available": true
+      },
+      {
+        "name": "Trevor's Beach House",
+        "image": "images/highend-apartment.jpg",
         "storage": 6000,
         "available": false
       }
