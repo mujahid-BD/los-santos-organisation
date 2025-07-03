@@ -2,6 +2,7 @@
   {
     "type": "Occupation Avenue Apt.Complex B",
     "image": "images/Occupation Avenue B.jpg",
+    "location": { "lat": 34.0522, "lng": -118.2437 },
     "categories": [
       {
         "name": "Low-End Apartment",
@@ -32,6 +33,7 @@
   {
     "type": "Occupation Avenue Apt.Complex D",
     "image": "images/Occupation Avenue D.jpg",
+    "location": { "lat": 34.0530, "lng": -118.2440 },
     "categories": [
       {
         "name": "Low-End Apartment",
@@ -68,6 +70,7 @@
   {
     "type": "Whispymound Drive",
     "image": "images/Whispymound Drive.jpg",
+    "location": { "lat": 34.0545, "lng": -118.2507 },
     "categories": [
       {
         "name": "Franklin's Mansion",
@@ -104,6 +107,7 @@
   {
     "type": "Nikola Avenue",
     "image": "images/Nikola Avenue.jpg",
+    "location": { "lat": 34.0515, "lng": -118.2472 },
     "categories": [
       {
         "name": "Michael's Mansion",
@@ -146,6 +150,7 @@
   {
     "type": "North Conker Avenue",
     "image": "images/North Conker Avenue.jpg",
+    "location": { "lat": 34.0580, "lng": -118.2460 },
     "categories": [
       {
         "name": "Franklin's Mansion",
@@ -182,6 +187,7 @@
   {
     "type": "Cockingend Drive",
     "image": "images/Cockingend Drive.jpg",
+    "location": { "lat": 34.0590, "lng": -118.2450 },
     "categories": [
       {
         "name": "Mid-End Apartment(House)",
@@ -236,6 +242,7 @@
   {
     "type": "Cougar Avenue",
     "image": "images/Cougar Avenue.jpg",
+    "location": { "lat": 34.0578, "lng": -118.2482 },
     "categories": [
       {
         "name": "Mid-End Apartment(House)",
@@ -266,6 +273,7 @@
   {
     "type": "Greenwich Place",
     "image": "images/Greenwich Place.jpg",
+    "location": { "lat": 34.0612, "lng": -118.2489 },
     "categories": [
       {
         "name": "High-End Apartment",
@@ -284,6 +292,7 @@
   {
     "type": "Eclipse Boulevard",
     "image": "images/Eclipse Boulevard.jpg",
+    "location": { "lat": 34.0528, "lng": -118.2657 },
     "categories": [
       {
         "name": "Motel",
@@ -350,6 +359,7 @@
   {
     "type": "Vespucci Boulevard Apt.Complex B",
     "image": "images/Vespucci Boulevard B.jpg",
+    "location": { "lat": 34.0135, "lng": -118.4942 },
     "categories": [
       {
         "name": "Trevor's Beach House",
