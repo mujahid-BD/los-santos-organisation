@@ -31,10 +31,19 @@ header nav ul {
   gap: 15px;
 }
 
+header nav ul li {
+  display: inline-block;
+}
+
 header nav ul li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+}
+
+header nav ul li a:hover {
+  color: #ccc;
+  text-decoration: underline;
 }
 
 .discord-button {
@@ -201,51 +210,77 @@ footer {
   margin: 4px 0;
 }
 
-/* 📄 Info Page Styling */
-.info-page {
-  padding: 40px;
-  max-width: 900px;
-  margin: auto;
-  font-size: 16px;
-  line-height: 1.8;
+/* === Mini Map Section === */
+#mini-map {
+  text-align: center;
+  padding: 40px 20px;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-
-.info-page h1, .info-page h2 {
-  color: #222;
-  margin-bottom: 15px;
+  border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd;
-  padding-bottom: 5px;
+  margin-top: 40px;
 }
 
-.info-page ul {
-  padding-left: 20px;
+#mini-map h2 {
   margin-bottom: 20px;
 }
 
-.info-page code {
-  background: #eee;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 90%;
+.map-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
 
-.info-page a {
-  color: #007bff;
-  text-decoration: underline;
+.map-image:hover {
+  transform: scale(1.02);
 }
 
+/* Tooltip Styling */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* === Responsive Media === */
 @media (max-width: 600px) {
   .house-type-card, .category-card, .employee-card {
     width: 90%;
   }
+
   .modal-content {
     width: 95%;
     margin: 20% auto;
   }
-  .info-page {
-    padding: 20px;
+
+  .map-image {
+    width: 100%;
+    max-width: 100%;
   }
 }
