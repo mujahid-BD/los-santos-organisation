@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Los Santos Organisation</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
   <header>
@@ -12,26 +13,26 @@
       <img src="images/logo.png" alt="Logo" />
       <h1>Los Santos Organisation</h1>
     </div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav>
       <ul>
         <li><a href="#house-list">Houses</a></li>
         <li><a href="employees.html">Employees</a></li>
         <li><a href="information.html">Information</a></li>
+        <li><a href="map.html">Map</a></li>
         <li><a href="https://discord.gg/NyUmvfAzC4" target="_blank" class="discord-button">Join Discord</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- ✅ Hero Section Start -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>🏙️ Welcome to Los Santos Organisation</h1>
-      <p>Your trusted destination for premium housing solutions.</p>
-    </div>
-  </section>
-  <!-- ✅ Hero Section End -->
-
   <main>
+    <section class="hero" data-aos="fade-up">
+      <div class="hero-content">
+        <h1 id="typing-text"></h1>
+        <a href="#house-list" class="cta-button">Explore Houses</a>
+      </div>
+    </section>
+
     <section id="top-rated">
       <h2>⭐ Top Rated Houses</h2>
       <div id="top-rated-list" class="house-grid"></div>
@@ -52,5 +53,26 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleMenu() {
+      document.querySelector('header nav ul').classList.toggle('active');
+    }
+
+    const text = "🏙️ Welcome to Los Santos Organisation";
+    let index = 0;
+
+    function typeEffect() {
+      if (index < text.length) {
+        document.getElementById("typing-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+
+    window.onload = typeEffect;
+  </script>
 </body>
 </html>
