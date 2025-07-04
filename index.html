@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Los Santos Organisation</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- AOS (Animate on Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
   <header>
@@ -13,7 +15,6 @@
       <img src="images/logo.png" alt="Logo" />
       <h1>Los Santos Organisation</h1>
     </div>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <nav>
       <ul>
         <li><a href="#house-list">Houses</a></li>
@@ -25,14 +26,16 @@
     </nav>
   </header>
 
-  <main>
-    <section class="hero" data-aos="fade-up">
-      <div class="hero-content">
-        <h1 id="typing-text"></h1>
-        <a href="#house-list" class="cta-button">Explore Houses</a>
-      </div>
-    </section>
+  <!-- ✅ Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up">
+      <h1>Welcome to Los Santos Organisation</h1>
+      <p class="typing-effect">Your Ultimate Housing Experience in GTA V</p>
+      <a href="#house-list" class="cta-button">Explore Houses</a>
+    </div>
+  </section>
 
+  <main>
     <section id="top-rated">
       <h2>⭐ Top Rated Houses</h2>
       <div id="top-rated-list" class="house-grid"></div>
@@ -44,6 +47,7 @@
     </section>
   </main>
 
+  <!-- Modal Booking -->
   <div id="booking-modal" class="modal">
     <div id="modal-content" class="modal-content"></div>
   </div>
@@ -53,26 +57,11 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- ✅ AOS Scroll Animation -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
-
-    function toggleMenu() {
-      document.querySelector('header nav ul').classList.toggle('active');
-    }
-
-    const text = "🏙️ Welcome to Los Santos Organisation";
-    let index = 0;
-
-    function typeEffect() {
-      if (index < text.length) {
-        document.getElementById("typing-text").innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 100);
-      }
-    }
-
-    window.onload = typeEffect;
   </script>
 </body>
 </html>
