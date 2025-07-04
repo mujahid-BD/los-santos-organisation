@@ -6,7 +6,7 @@ let modal = document.getElementById("booking-modal");
 let modalContent = document.getElementById("modal-content");
 
 // Google Apps Script URL (Replace this)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwo1_m07KzIhHWwTI0u2f63QLspcG8sE0fScnM6FnZyeuR6OflFVuMvjd7pJkae4bU/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFUDtuBSpvkaXXDVzYHscL8GWdDEjj8SYd-3rr7jVA3hpxUzRId_6guqVqjwHm_F8/exec";
 
 // Load JSON data
 fetch("houses.json")
