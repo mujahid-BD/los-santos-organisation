@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Los Santos Organisation</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- AOS (Animate on Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
@@ -17,7 +15,7 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#house-list">Houses</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="employees.html">Employees</a></li>
         <li><a href="information.html">Information</a></li>
         <li><a href="map.html">Map</a></li>
@@ -31,23 +29,28 @@
     <div class="hero-content" data-aos="fade-up">
       <h1>Welcome to Los Santos Organisation</h1>
       <p class="typing-effect">Your Ultimate Housing Experience in GTA V</p>
-      <a href="#house-list" class="cta-button">Explore Houses</a>
     </div>
   </section>
 
   <main>
+    <!-- Top Rated Houses -->
     <section id="top-rated">
       <h2>⭐ Top Rated Houses</h2>
       <div id="top-rated-list" class="house-grid"></div>
     </section>
 
+    <!-- All Houses (Shown in 2 rows of 4, 3 per row) -->
     <section id="house-list">
       <h2>All Houses</h2>
-      <div class="house-grid"></div>
+
+      <div class="house-grid-wrapper">
+        <div class="house-grid" id="house-row-1"></div>
+        <div class="house-grid" id="house-row-2"></div>
+      </div>
     </section>
   </main>
 
-  <!-- Modal Booking -->
+  <!-- Modal -->
   <div id="booking-modal" class="modal">
     <div id="modal-content" class="modal-content"></div>
   </div>
@@ -57,11 +60,12 @@
   </footer>
 
   <script src="script.js"></script>
-
-  <!-- ✅ AOS Scroll Animation -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    // 🔧 Split house display into two rows manually (this is just UI template setup).
+    // You'll need to edit your script.js to populate house-row-1 and house-row-2 with first 4 and next 4 houses manually.
   </script>
 </body>
 </html>
