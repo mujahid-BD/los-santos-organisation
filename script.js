@@ -5,6 +5,9 @@ let topRatedListElement = document.querySelector("#top-rated-list");
 let modal = document.getElementById("booking-modal");
 let modalContent = document.getElementById("modal-content");
 
+// Google Apps Script URL (Replace this)
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwo1_m07KzIhHWwTI0u2f63QLspcG8sE0fScnM6FnZyeuR6OflFVuMvjd7pJkae4bU/exec";
+
 // Load JSON data
 fetch("houses.json")
   .then((res) => res.json())
@@ -24,18 +27,15 @@ fetch("houses.json")
 function renderHouseCard(house, container, houseIndex, catIndex = null) {
   let card = document.createElement("div");
   card.className = "house-type-card";
-  card.innerHTML = `
-    <img src="${house.image}" alt="${house.type}" />
-    <h2>${house.type}</h2>
-  `;
+  card.innerHTML = `<img src="${house.image}" alt="${house.type}" />
+    <h2>${house.type}</h2>`;
   card.addEventListener("click", () => showCategories(house, houseIndex));
 
   if (catIndex !== null) {
     const cat = house.categories[catIndex];
     card.innerHTML += `
       <p>🏷️ ${cat.name}</p>
-      <p>⭐ Rating: ${getAverageRating(house.type, cat.name).toFixed(1)}</p>
-    `;
+      <p>⭐ Rating: ${getAverageRating(house.type, cat.name).toFixed(1)}</p>`;
   }
 
   container.appendChild(card);
@@ -46,9 +46,7 @@ function showCategories(house, houseIndex) {
   modalContent.innerHTML = `<span class="close" id="close-modal">&times;</span>
     <h2>${house.type}</h2>
     <div class="category-list">
-      ${house.categories
-        .map(
-          (cat, index) => `
+      ${house.categories.map((cat, index) => `
         <div class="category-card">
           <img src="${cat.image}" alt="${cat.name}" />
           <h3>${cat.name}</h3>
@@ -57,13 +55,11 @@ function showCategories(house, houseIndex) {
           ${renderRatingStars(house.type, cat.name)}
           ${cat.available ? `<button onclick="openBooking('${house.type}', '${cat.name}')">Request to Book</button>` : ""}
         </div>
-      `
-        )
-        .join("")}
+      `).join("")}
     </div>
   `;
 
-  document.getElementById("close-modal").onclick = function () {
+  document.getElementById("close-modal").onclick = () => {
     modal.style.display = "none";
   };
 
@@ -94,22 +90,32 @@ function submitBooking(houseType, categoryName) {
   const discord = document.getElementById("discord").value;
   const message = document.getElementById("message").value;
 
-  const payload = {
-    content: `📢 New Booking Request\n🏠 House: ${houseType}\n📦 Category: ${categoryName}\n🙍 Name: ${username}\n💬 Discord: ${discord}\n📝 Message: ${message}`
-  };
+  if (!username || !discord) {
+    alert("Please fill in all required fields.");
+    return;
+  }
 
-  fetch("https://ptb.discord.com/api/webhooks/1389258607631007887/UpeNc0zDujkUfCcOtmrlPXPCzK1dkDc-hZZBLFj68sIVL8FUTBR5vdos8awmeokCG485", {
+  const formData = new URLSearchParams();
+  formData.append("house", houseType);
+  formData.append("category", categoryName);
+  formData.append("name", username);
+  formData.append("discord", discord);
+  formData.append("message", message);
+
+  fetch(GOOGLE_SCRIPT_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
+    body: formData,
   })
     .then((res) => {
       if (res.ok) {
-        alert("Request Sent!");
+        alert("Booking request sent successfully!");
         modal.style.display = "none";
       } else {
         alert("Failed to send request.");
       }
+    })
+    .catch(() => {
+      alert("Error sending request.");
     });
 }
 
@@ -139,14 +145,4 @@ function saveRating(houseType, category, rating) {
   data[key].total += rating;
   data[key].count += 1;
   localStorage.setItem("ratings", JSON.stringify(data));
-}
-
-// Optional QR (if used)
-const qrCanvas = document.getElementById("discord-qr");
-if (qrCanvas) {
-  new QRCode(qrCanvas, {
-    text: "https://discord.gg/NyUmvfAzC4",
-    width: 120,
-    height: 120
-  });
 }
