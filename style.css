@@ -1,4 +1,4 @@
-/* === style.css === */
+/* === General Styles === */
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -6,6 +6,25 @@ body {
   color: #333;
 }
 
+h2 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* === Header === */
 header {
   background: #222;
   color: #fff;
@@ -54,17 +73,66 @@ header nav ul li a:hover {
   text-decoration: none;
 }
 
-h2 {
+/* === Hero Section === */
+.hero {
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  color: white;
+  padding: 100px 20px;
   text-align: center;
-  margin-top: 30px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.hero p.typing-effect {
+  font-size: 1.3rem;
+  margin: 0;
+  animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  display: inline-block;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
+}
+
+/* === House Grid === */
+.house-grid-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .house-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  padding: 20px;
+  gap: 20px;
 }
 
 .house-type-card, .category-card {
@@ -72,7 +140,8 @@ h2 {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 250px;
+  width: calc(100% / 3 - 40px);
+  max-width: 300px;
   text-align: center;
   padding-bottom: 10px;
   transition: transform 0.2s;
@@ -88,19 +157,7 @@ h2 {
   object-fit: cover;
 }
 
-button {
-  padding: 8px 16px;
-  background-color: #333;
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: #555;
-}
-
+/* === Modal === */
 .modal {
   display: none;
   position: fixed;
@@ -141,6 +198,7 @@ button:hover {
   cursor: pointer;
 }
 
+/* === Footer === */
 footer {
   background-color: #222;
   color: white;
@@ -149,30 +207,65 @@ footer {
   margin-top: 40px;
 }
 
-.not-available {
-  color: red;
-  font-weight: bold;
+/* === Tooltip === */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
 }
 
-.rating-stars {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5px;
-  gap: 2px;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: #222;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-.rating-star {
-  font-size: 18px;
-  cursor: pointer;
-  color: #ccc;
-  transition: color 0.2s;
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
-.rating-star.filled {
-  color: gold;
+/* === Map Section === */
+#mini-map {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fff;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd;
+  margin-top: 40px;
 }
 
+#mini-map h2 {
+  margin-bottom: 20px;
+}
+
+.map-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.map-image:hover {
+  transform: scale(1.02);
+}
+
+/* === Employee Cards === */
 .employee-grid {
   display: flex;
   flex-wrap: wrap;
@@ -210,66 +303,37 @@ footer {
   margin: 4px 0;
 }
 
-/* === Mini Map Section === */
-#mini-map {
-  text-align: center;
-  padding: 40px 20px;
-  background: #fff;
-  border-top: 2px solid #ddd;
-  border-bottom: 2px solid #ddd;
-  margin-top: 40px;
+/* === Responsive === */
+@media (max-width: 1000px) {
+  .house-type-card {
+    width: calc(50% - 30px);
+  }
 }
 
-#mini-map h2 {
-  margin-bottom: 20px;
-}
-
-.map-image {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
-.map-image:hover {
-  transform: scale(1.02);
-}
-
-/* Tooltip Styling */
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: help;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 200px;
-  background-color: #222;
-  color: #fff;
-  text-align: left;
-  border-radius: 6px;
-  padding: 8px 10px;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -100px;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-/* === Responsive Media === */
 @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 80px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
   .house-type-card, .category-card, .employee-card {
     width: 90%;
   }
@@ -284,107 +348,3 @@ footer {
     max-width: 100%;
   }
 }
-/* === Hero Section === */
-.hero {
-  background: url('images/hero-bg.jpg') center/cover no-repeat;
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 0;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  margin: auto;
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.3rem;
-  margin: 0;
-}
-
-/* Typing animation for tagline */
-.typing-effect {
-  display: inline-block;
-  border-right: 2px solid #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-  max-width: 100%;
-}
-
-/* Call-to-action button */
-.hero .cta-button {
-  margin-top: 20px;
-  display: inline-block;
-  background: #ff6a00;
-  color: white;
-  padding: 12px 24px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
-}
-
-.hero .cta-button:hover {
-  background: #e55b00;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: white; }
-}
-
-@media (max-width: 600px) {
-  .hero {
-    padding: 80px 15px;
-  }
-
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .hero .cta-button {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-}
-
-
