@@ -27,7 +27,7 @@ fetch("houses.json")
     });
 
     // Optional: Send data to Discord once loaded
-    // sendHouseStatusToDiscord(houses);
+     sendHouseStatusToDiscord(houses);
   });
 
 function renderHouseCard(house, container, houseIndex, catIndex = null) {
