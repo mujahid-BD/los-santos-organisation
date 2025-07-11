@@ -9,7 +9,7 @@ let modalContent = document.getElementById("modal-content");
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFUDtuBSpvkaXXDVzYHscL8GWdDEjj8SYd-3rr7jVA3hpxUzRId_6guqVqjwHm_F8/exec";
 
 // ✅ Discord Webhook for auto status post
-const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1393351429510398032/Ejtpc7APBAiIQ4E4i4ocUBY0tiDTtLEAFmwt0rUvOFfF6Covm2hZxs9-OU77U-AkwA-4";
+const DISCORD_WEBHOOK_URL = "discord webhook";
 
 // Load JSON and display
 fetch("houses.json")
