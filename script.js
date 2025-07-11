@@ -5,16 +5,16 @@ let topRatedListElement = document.querySelector("#top-rated-list");
 let modal = document.getElementById("booking-modal");
 let modalContent = document.getElementById("modal-content");
 
-// Google Apps Script URL (optional)
+// Optional: Google Sheet API (if needed)
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFUDtuBSpvkaXXDVzYHscL8GWdDEjj8SYd-3rr7jVA3hpxUzRId_6guqVqjwHm_F8/exec";
 
-// Discord Webhook (Replace with your own if needed)
+// ✅ Discord Webhook for auto status post
 const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1393344900476698795/ZBwAegNGJ8Oo5hG0FYu99fwR002mfQ16MrL2d31pSz1OkrywFC9QKwPIRouuj9ptWoRJ";
 
-// Load JSON data
+// Load JSON and display
 fetch("houses.json")
-  .then((res) => res.json())
-  .then((houses) => {
+  .then(res => res.json())
+  .then(houses => {
     houses.forEach((house, houseIndex) => {
       renderHouseCard(house, houseListElement, houseIndex);
 
@@ -26,10 +26,11 @@ fetch("houses.json")
       });
     });
 
-    // Optional: Send data to Discord once loaded
-     sendHouseStatusToDiscord(houses);
+    // 🚀 Auto post to Discord after data load
+    sendHouseStatusToDiscord(houses);
   });
 
+// === UI Rendering ===
 function renderHouseCard(house, container, houseIndex, catIndex = null) {
   let card = document.createElement("div");
   card.className = "house-type-card";
@@ -52,7 +53,7 @@ function showCategories(house, houseIndex) {
   modalContent.innerHTML = `<span class="close" id="close-modal">&times;</span>
     <h2>${house.type}</h2>
     <div class="category-list">
-      ${house.categories.map((cat, index) => `
+      ${house.categories.map((cat) => `
         <div class="category-card">
           <img src="${cat.image}" alt="${cat.name}" />
           <h3>${cat.name}</h3>
@@ -80,6 +81,7 @@ function showCategories(house, houseIndex) {
   });
 }
 
+// === Booking Submission ===
 function openBooking(houseType, categoryName) {
   let formHTML = `
     <h3>Request Booking - ${houseType} / ${categoryName}</h3>
@@ -112,7 +114,7 @@ function submitBooking(houseType, categoryName) {
     method: "POST",
     body: formData,
   })
-    .then((res) => {
+    .then(res => {
       if (res.ok) {
         alert("Booking request sent successfully!");
         modal.style.display = "none";
@@ -125,6 +127,7 @@ function submitBooking(houseType, categoryName) {
     });
 }
 
+// === Rating System ===
 function renderRatingStars(houseType, category) {
   const avg = getAverageRating(houseType, category);
   let html = '<div class="rating-stars">';
@@ -153,7 +156,7 @@ function saveRating(houseType, category, rating) {
   localStorage.setItem("ratings", JSON.stringify(data));
 }
 
-// 🚀 Optional: Send current house list to Discord
+// === Discord Auto Reporter ===
 function sendHouseStatusToDiscord(houses) {
   let message = "**🏠 House Availability List**\n\n";
   houses.forEach(house => {
@@ -164,9 +167,7 @@ function sendHouseStatusToDiscord(houses) {
 
   fetch(DISCORD_WEBHOOK_URL, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content: message })
   });
 }
