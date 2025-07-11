@@ -5,8 +5,11 @@ let topRatedListElement = document.querySelector("#top-rated-list");
 let modal = document.getElementById("booking-modal");
 let modalContent = document.getElementById("modal-content");
 
-// Google Apps Script URL (Replace this)
+// Google Apps Script URL (optional)
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFUDtuBSpvkaXXDVzYHscL8GWdDEjj8SYd-3rr7jVA3hpxUzRId_6guqVqjwHm_F8/exec";
+
+// Discord Webhook (Replace with your own if needed)
+const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1393344900476698795/ZBwAegNGJ8Oo5hG0FYu99fwR002mfQ16MrL2d31pSz1OkrywFC9QKwPIRouuj9ptWoRJ";
 
 // Load JSON data
 fetch("houses.json")
@@ -22,6 +25,9 @@ fetch("houses.json")
         }
       });
     });
+
+    // Optional: Send data to Discord once loaded
+    // sendHouseStatusToDiscord(houses);
   });
 
 function renderHouseCard(house, container, houseIndex, catIndex = null) {
@@ -145,4 +151,22 @@ function saveRating(houseType, category, rating) {
   data[key].total += rating;
   data[key].count += 1;
   localStorage.setItem("ratings", JSON.stringify(data));
+}
+
+// 🚀 Optional: Send current house list to Discord
+function sendHouseStatusToDiscord(houses) {
+  let message = "**🏠 House Availability List**\n\n";
+  houses.forEach(house => {
+    house.categories.forEach(cat => {
+      message += `**${house.type} - ${cat.name}**: ${cat.available ? "✅ Available" : "❌ Not Available"}\n`;
+    });
+  });
+
+  fetch(DISCORD_WEBHOOK_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ content: message })
+  });
 }
