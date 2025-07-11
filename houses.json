@@ -76,7 +76,7 @@
         "name": "Franklin's Mansion",
         "image": "images/franklin-mansion.jpg",
         "storage": 10000,
-        "available": true
+        "available": false
       },
       {
         "name": "High-End Apartment",
@@ -100,7 +100,7 @@
         "name": "Mid-End Apartment(House)",
         "image": "images/highend-apartment.jpg",
         "storage": 5000,
-        "available": false
+        "available": true
       }
     ]
   },
@@ -174,7 +174,7 @@
         "name": "Franklin's Mansion",
         "image": "images/franklin-mansion.jpg",
         "storage": 10000,
-        "available": true
+        "available": false
       },
       {
         "name": "Mid-End Apartment(House)",
@@ -193,7 +193,7 @@
         "name": "Mid-End Apartment(House)",
         "image": "images/franklin-mansion.jpg",
         "storage": 5000,
-        "available": false
+        "available": true
       },
       {
         "name": "Michael's Mansion",
@@ -205,7 +205,7 @@
         "name": "Mid-End Apartment(House)",
         "image": "images/highend-apartment.jpg",
         "storage": 5000,
-        "available": true
+        "available": false
       },
       {
         "name": "Mid-End Apartment(House)",
@@ -254,7 +254,7 @@
         "name": "Michael's Mansion",
         "image": "images/beachhouse.jpg",
         "storage": 10000,
-        "available": true
+        "available": false
       },
       {
         "name": "Trevor's Beach House",
