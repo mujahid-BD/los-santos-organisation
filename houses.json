@@ -162,7 +162,7 @@
         "name": "High-End Apartment",
         "image": "images/midend-apartment.jpg",
         "storage": 10000,
-        "available": true
+        "available": false
       },
       {
         "name": "High-End Apartment",
