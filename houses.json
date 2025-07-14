@@ -14,7 +14,7 @@
         "name": "Low-End Apartment",
         "image": "images/janitor.jpg",
         "storage": 2500,
-        "available": false
+        "available": true
       },
       {
         "name": "Low-End Apartment",
@@ -260,7 +260,7 @@
         "name": "Trevor's Beach House",
         "image": "images/beachhouse.jpg",
         "storage": 6000,
-        "available": false
+        "available": true
       },
       {
         "name": "Trevor's Beach House",
