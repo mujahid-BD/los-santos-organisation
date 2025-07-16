@@ -269,8 +269,8 @@ footer {
 .employee-row {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
@@ -279,9 +279,13 @@ footer {
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 220px;
+  min-height: 400px; /* Ensure same height */
   text-align: center;
   padding: 15px;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .employee-card.full-width {
@@ -297,9 +301,10 @@ footer {
 
 .employee-card img {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   border-radius: 8px;
+  object-position: center;
 }
 
 .employee-card h3 {
