@@ -266,12 +266,12 @@ footer {
 }
 
 /* === Employee Cards === */
-.employee-grid {
+.employee-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 20px;
+  margin-bottom: 30px;
 }
 
 .employee-card {
@@ -282,6 +282,13 @@ footer {
   text-align: center;
   padding: 15px;
   transition: transform 0.3s ease;
+}
+
+.employee-card.full-width {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background: #e6f7ff;
 }
 
 .employee-card:hover {
@@ -301,6 +308,15 @@ footer {
 
 .employee-card p {
   margin: 4px 0;
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 5px;
+  background: gold;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 /* === Responsive === */
@@ -347,4 +363,9 @@ footer {
     width: 100%;
     max-width: 100%;
   }
+
+  .employee-card.full-width {
+    width: 95%;
+  }
 }
+
