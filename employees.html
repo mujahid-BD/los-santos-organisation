@@ -25,7 +25,7 @@
   <main>
     <section>
       <h2>Meet Our Team</h2>
-      <div class="employee-grid" id="employees-container"></div>
+      <div id="employee-section"></div>
     </section>
   </main>
 
@@ -37,10 +37,11 @@
     fetch("employees.json")
       .then((res) => res.json())
       .then((employees) => {
-        const grid = document.getElementById("employee-grid");
-        employees.forEach((emp) => {
+        const section = document.getElementById("employee-section");
+
+        function createCard(emp, full = false) {
           const card = document.createElement("div");
-          card.className = "employee-card";
+          card.className = "employee-card" + (full ? " full-width" : "");
           card.innerHTML = `
             <img src="${emp.image}" alt="${emp.name}" />
             <h3>${emp.name}</h3>
@@ -48,8 +49,31 @@
             <p>Phone: ${emp.number}</p>
             <p>Discord: ${emp.discord}</p>
           `;
-          grid.appendChild(card);
-        });
+          return card;
+        }
+
+        function createRow(emps, full = false) {
+          const row = document.createElement("div");
+          row.className = "employee-row";
+          emps.forEach(emp => {
+            row.appendChild(createCard(emp, full));
+          });
+          section.appendChild(row);
+        }
+
+        // === Grouping ===
+        const owner = employees.filter(e => e.role === "Owner");
+        const managers = employees.filter(e => e.role === "Manager" || e.role === "Assistant Manager");
+        const agentHead = employees.filter(e => e.role === "Agent Head");
+        const agents = employees.filter(e => e.role === "Agent");
+
+        if (owner.length) createRow(owner, true);
+        if (managers.length) createRow(managers);
+        if (agentHead.length) createRow(agentHead, true);
+
+        for (let i = 0; i < agents.length; i += 3) {
+          createRow(agents.slice(i, i + 3));
+        }
       });
   </script>
 </body>
