@@ -1,23 +1,20 @@
-// === script.js ===
-
 let houseListElement = document.querySelector("#house-list .house-grid");
 let topRatedListElement = document.querySelector("#top-rated-list");
 let modal = document.getElementById("booking-modal");
 let modalContent = document.getElementById("modal-content");
 
-// Optional: Google Sheet API (if needed)
+// Optional: Google Sheet API
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFUDtuBSpvkaXXDVzYHscL8GWdDEjj8SYd-3rr7jVA3hpxUzRId_6guqVqjwHm_F8/exec";
 
-// ✅ Discord Webhook for auto status post
-const DISCORD_WEBHOOK_URL = "discord webhook";
+// Discord Webhook URL
+const DISCORD_WEBHOOK_URL = "your_discord_webhook_url_here"; // Update here
 
-// Load JSON and display
+// Load house data
 fetch("houses.json")
   .then(res => res.json())
   .then(houses => {
     houses.forEach((house, houseIndex) => {
       renderHouseCard(house, houseListElement, houseIndex);
-
       house.categories.forEach((cat, catIndex) => {
         const avgRating = getAverageRating(house.type, cat.name);
         if (avgRating >= 4.5) {
@@ -26,11 +23,17 @@ fetch("houses.json")
       });
     });
 
-    // 🚀 Auto post to Discord after data load
-    sendHouseStatusToDiscord(houses);
+    sendHouseStatusToDiscord(houses); // Discord post
   });
 
-// === UI Rendering ===
+// Load and render employees
+fetch("employees.json")
+  .then(res => res.json())
+  .then(employees => {
+    renderEmployees(employees);
+  });
+
+// === House UI rendering ===
 function renderHouseCard(house, container, houseIndex, catIndex = null) {
   let card = document.createElement("div");
   card.className = "house-type-card";
@@ -81,7 +84,6 @@ function showCategories(house, houseIndex) {
   });
 }
 
-// === Booking Submission ===
 function openBooking(houseType, categoryName) {
   let formHTML = `
     <h3>Request Booking - ${houseType} / ${categoryName}</h3>
@@ -127,7 +129,7 @@ function submitBooking(houseType, categoryName) {
     });
 }
 
-// === Rating System ===
+// === Rating ===
 function renderRatingStars(houseType, category) {
   const avg = getAverageRating(houseType, category);
   let html = '<div class="rating-stars">';
@@ -156,7 +158,7 @@ function saveRating(houseType, category, rating) {
   localStorage.setItem("ratings", JSON.stringify(data));
 }
 
-// === Discord Auto Reporter ===
+// === Discord Reporter ===
 function sendHouseStatusToDiscord(houses) {
   let message = "**🏠 House Availability List**\n\n";
   houses.forEach(house => {
@@ -171,3 +173,66 @@ function sendHouseStatusToDiscord(houses) {
     body: JSON.stringify({ content: message })
   });
 }
+
+// === Employee Rendering ===
+function renderEmployees(employees) {
+  const container = document.getElementById("employees-container");
+  container.innerHTML = "";
+
+  const roles = {
+    "Owner": [],
+    "Manager": [],
+    "Assistant Manager": [],
+    "Agent Head": [],
+    "Agent": []
+  };
+
+  employees.forEach(emp => {
+    if (roles[emp.role]) {
+      roles[emp.role].push(emp);
+    }
+  });
+
+  // Owner
+  roles["Owner"].forEach(emp => {
+    container.appendChild(createEmployeeCard(emp, "full-width"));
+  });
+
+  // Manager + Assistant Manager
+  const managerRow = document.createElement("div");
+  managerRow.className = "employee-row";
+  [...roles["Manager"], ...roles["Assistant Manager"]].forEach(emp => {
+    managerRow.appendChild(createEmployeeCard(emp));
+  });
+  container.appendChild(managerRow);
+
+  // Agent Head
+  roles["Agent Head"].forEach(emp => {
+    container.appendChild(createEmployeeCard(emp, "full-width"));
+  });
+
+  // Agent: 3 per row
+  for (let i = 0; i < roles["Agent"].length; i += 3) {
+    const row = document.createElement("div");
+    row.className = "employee-row";
+    roles["Agent"].slice(i, i + 3).forEach(emp => {
+      row.appendChild(createEmployeeCard(emp));
+    });
+    container.appendChild(row);
+  }
+}
+
+function createEmployeeCard(emp, type = "normal") {
+  const card = document.createElement("div");
+  card.className = type === "full-width" ? "employee-card full-width" : "employee-card";
+  card.innerHTML = `
+    <img src="${emp.image}" alt="${emp.name}">
+    <h3>${emp.name}</h3>
+    <p>${emp.role}</p>
+    <p>📞 ${emp.number}</p>
+    <p>💬 ${emp.discord}</p>
+    ${emp.employeeOfTheMonth ? `<span class="badge">🏅 Employee of the Month</span>` : ""}
+  `;
+  return card;
+}
+
