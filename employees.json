@@ -20,5 +20,29 @@
     "number": "297-4572",
     "discord": "5l1ther",
     "employeeOfTheMonth": true
+  },
+  {
+    "name": "JonSnowFS",
+    "role": "Agent Head",
+    "image": "images/mof.jpg",
+    "number": "321-1930",
+    "discord": "jonsnowfs",
+    "employeeOfTheMonth": false
+  },
+  {
+    "name": "Saniyat Shelby",
+    "role": "Agent",
+    "image": "images/mof.jpg",
+    "number": "528-1062",
+    "discord": "saniyatshure",
+    "employeeOfTheMonth": false
+  },
+  {
+    "name": "Rolex Anik",
+    "role": "Agent",
+    "image": "images/mof.jpg",
+    "number": "778-2736",
+    "discord": "nf_anik_10",
+    "employeeOfTheMonth": false
   }
 ]
