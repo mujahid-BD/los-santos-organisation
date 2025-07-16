@@ -34,6 +34,7 @@
   </footer>
 
   <script>
+  document.addEventListener("DOMContentLoaded", function () {
     fetch("employees.json")
       .then((res) => res.json())
       .then((employees) => {
@@ -61,7 +62,6 @@
           section.appendChild(row);
         }
 
-        // === Grouping ===
         const owner = employees.filter(e => e.role === "Owner");
         const managers = employees.filter(e => e.role === "Manager" || e.role === "Assistant Manager");
         const agentHead = employees.filter(e => e.role === "Agent Head");
@@ -75,6 +75,7 @@
           createRow(agents.slice(i, i + 3));
         }
       });
-  </script>
+  });
+</script>
 </body>
 </html>
