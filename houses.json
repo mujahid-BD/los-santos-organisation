@@ -272,7 +272,7 @@
         "name": "Trevor's Beach House",
         "image": "images/beachhouse.jpg",
         "storage": 6000,
-        "available": false
+        "available": true
       }
     ]
   },
@@ -316,19 +316,19 @@
         "name": "Motel",
         "image": "images/franklin-mansion.jpg",
         "storage": 1000,
-        "available": false
+        "available": true
       },
       {
         "name": "Motel",
         "image": "images/franklin-mansion.jpg",
         "storage": 1000,
-        "available": false
+        "available": true
       },
       {
         "name": "Motel",
         "image": "images/franklin-mansion.jpg",
         "storage": 1000,
-        "available": false
+        "available": true
       },
       {
         "name": "Motel",
@@ -352,7 +352,7 @@
         "name": "Motel",
         "image": "images/franklin-mansion.jpg",
         "storage": 1000,
-        "available": false
+        "available": true
       },
       {
         "name": "Motel",
@@ -401,6 +401,152 @@
         "name": "Trevor's Beach House",
         "image": "images/highend-apartment.jpg",
         "storage": 6000,
+        "available": false
+      }
+    ]
+  },
+{
+    "type": "Del Perro Boulevard",
+    "image": "images/Del Perro Boulevard.jpg",
+    "location": { "lat": 34.0528, "lng": -118.2657 },
+    "categories": [
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      }
+    ]
+  },
+{
+    "type": "Bay City Avenue Apt. Complex A",
+    "image": "images/Bay City Avenue A.jpg",
+    "location": { "lat": 34.0528, "lng": -118.2657 },
+    "categories": [
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/highend-apartment.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
+        "available": false
+      },
+      {
+        "name": "Low-End Apartment",
+        "image": "images/franklin-mansion.jpg",
+        "storage": 2500,
         "available": false
       }
     ]
