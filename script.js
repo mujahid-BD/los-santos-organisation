@@ -55,13 +55,13 @@ function showCategories(house, houseIndex) {
   modal.style.display = "block";
   modalContent.innerHTML = `<span class="close" id="close-modal">&times;</span>
     <h2>${house.type}</h2>
-    <div class="category-list">
+    <div class="category-grid">
       ${house.categories.map((cat) => `
         <div class="category-card">
           <img src="${cat.image}" alt="${cat.name}" />
           <h3>${cat.name}</h3>
           <p>Storage: ${cat.storage}</p>
-          <p>Status: ${cat.available ? "Available" : "<span class='not-available'>Not Available</span>"}</p>
+          <p>Status: ${cat.available ? "✅ Available" : "<span class='not-available'>❌ Not Available</span>"}</p>
           ${renderRatingStars(house.type, cat.name)}
           ${cat.available ? `<button onclick="openBooking('${house.type}', '${cat.name}')">Request to Book</button>` : ""}
         </div>
@@ -204,7 +204,7 @@ function renderEmployees(employees) {
   [...roles["Manager"], ...roles["Assistant Manager"]].forEach(emp => {
     managerRow.appendChild(createEmployeeCard(emp));
   });
-  container.appendChild(managerRow);
+  if (managerRow.children.length > 0) container.appendChild(managerRow);
 
   // Agent Head
   roles["Agent Head"].forEach(emp => {
@@ -235,4 +235,3 @@ function createEmployeeCard(emp, type = "normal") {
   `;
   return card;
 }
-
